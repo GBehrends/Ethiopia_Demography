@@ -8,7 +8,7 @@
 #SBATCH --array=1
 
 # Iterate through list of assembly prefixes
-array=$( head -n${SLURM_ARRAY_TASK_ID} chrom_list.txt | tail -n1 )
+array=$( head -n${SLURM_ARRAY_TASK_ID} assembly_list.txt | tail -n1 )
 
 # Unzip assembly
 gunzip ${array}_genomic.fna.gz 
