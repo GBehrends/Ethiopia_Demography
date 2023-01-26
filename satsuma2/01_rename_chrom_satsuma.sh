@@ -18,8 +18,3 @@ while read n k; do sed -i "/$k/ c\>$n" ${array}_genomic.fna; done < ${array}_chr
 
 # Rezip the assembly to save space
 gzip ${array}_genomic.fna
-
-
-
-
-
