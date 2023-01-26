@@ -4,5 +4,5 @@ Step 1: Create a directory called 01_bam. Create these example files inside of 0
 - samplelist: a list of all sample fastq prefixes to align  
 - references: a list of corresponding reference assemblies to align each sample fastq too. Must be in the same order. 
   
- Step 2: Run the trim_align script. Each step within the script is annotated. The script assumes that all references are 
- gzipped. The end products are filtered bam files with indexes. 
+ Step 2: Run the trim_align script. Each step within the script is annotated. The script assumes that all reference
+ assemblies are gzipped. The end products are filtered bam files with indexes. 
