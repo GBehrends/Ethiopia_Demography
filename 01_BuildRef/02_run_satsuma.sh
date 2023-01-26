@@ -5,11 +5,11 @@
 #SBATCH --nodes=1 --ntasks=128
 #SBATCH --time=48:00:00
 #SBATCH --mem=450G
-#SATCH --array=1
+#SATCH --array=1-?
 
 module load gcc
 
-workdir=/lustre/scratch/gbehrend/Demog_ETH
+workdir=?
 
 target=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/ref/target.txt | tail -n1 )
 query=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/ref/query.txt | tail -n1 )
@@ -29,12 +29,4 @@ ${workdir}/satsuma2/bin/Chromosemble -t ${workdir}/ref/${target}_genomic.fna \
 
 gzip ${workdir}/ref/${target}_genomic.fna
 gzip ${workdir}/ref/${query}_genomic.fna
-
-
-
-
-
-
-
-
 
