@@ -29,12 +29,3 @@ ${workdir}/satsuma2/bin/Chromosemble -t ${workdir}/ref/${target}_genomic.fna \
 
 gzip ${workdir}/ref/${target}_genomic.fna
 gzip ${workdir}/ref/${query}_genomic.fna
-
-
-
-
-
-
-
-
-
