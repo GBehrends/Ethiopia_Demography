@@ -5,7 +5,7 @@
 #SBATCH --partition=nocona
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --array=1
+#SBATCH --array=1-?
 
 # Iterate through list of assembly prefixes
 array=$( head -n${SLURM_ARRAY_TASK_ID} assembly_list.txt | tail -n1 )
