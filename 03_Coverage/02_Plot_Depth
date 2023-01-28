@@ -1,0 +1,95 @@
+                          ################################################
+                          # Depth of Coverage Plots for Multiple Species #
+                          ################################################
+                          
+# Iterates through individual depth files and produces a facet wrapped pdf plot to visualize the 
+# distribution of coverage throughout the genomes of sampled individuals. 
+                                        
+# To begin, establish directories of input (samtools depth) and output (plot pdf) files. These depth files  
+# should only have one column with the counts for each chromsomal site in them.  
+inputdir <- <input directory>                       
+outputdir <- <output directory>
+
+
+###########################################################################################################                         
+                                        ## Installation ## 
+install.packages("stringi")
+
+library(stringi)
+
+###########################################################################################################
+
+                                      ## Gathering the Data ##
+
+setwd(inputdir)
+
+## Start for loop for the list of file_prefix. Each file will include: Genus, Species, and Sample ID. 
+x_files <- list.files(pattern="depth_reduced.txt")
+
+# Coverage max to check will depend on your targeted depth of coverage during sequencing. This sets the upper 
+# bounds of the plot.  
+coverage_max_to_check <- 70
+plot_max <- coverage_max_to_check + 2
+
+output1 <- list()
+output2 <- list()
+mean_coverage <- c()
+for(a in 1:length(x_files)) {
+  a_rep <- scan(x_files[a])
+  a_output <- c()
+  for(b in 1:plot_max) {
+    if(b == plot_max) {
+      a_output <- c(a_output, length(a_rep[a_rep >= (b - 1)]))
+    } else {
+      a_output <- c(a_output, length(a_rep[a_rep == (b - 1)]))
+    }
+  }
+  a_output2 <- a_output / sum(a_output)
+  output1[[a]] <- a_output
+  output2[[a]] <- a_output2
+  mean_coverage <- c(mean_coverage, mean(a_rep))
+}
+
+
+rm(a_rep)
+tempDat_file <- paste(outputdir, "/", "temp.Rdata", sep = "") # Create filename
+save.image(tempDat_file)
+
+###########################################################################################################
+
+                                        ## Plotting the Data ##
+  
+load(tempDat_file)
+
+setwd(inputdir)
+
+# Will need to modify this step. My files were named likeso : "<species>_<sample_id>_depth_reduced.txt". 
+# This step was used to automatically generate the right plot titles. 
+x_files <- list.files(pattern="depth_reduced.txt")
+x_files <- gsub("_EB.*", "", x_files)
+x_files <- gsub("_", " ", x_files)
+x_files <- paste(substr(sapply(strsplit(x_files, " "), "[[", 1), 1, 1),
+                  sapply(strsplit(x_files, " "), "[[", 2), sep = ". ")
+
+lim <- coverage_max_to_check + 1
+
+names(output1) <- x_files
+names(output2) <- x_files
+
+## Create facetted plots by the Species. 
+final_pdf <- paste0(outputdir, "/", "coverage.pdf")
+
+  pdf(file = final_pdf, width = 12, height = 12)
+  par(mfrow=c(5,4))
+  for(a in 1:length(output2)) {
+  plot(0:lim, output2[[a]], pch=19, cex=0.1, xlab="", ylab = "", 
+       main=names(output2[a]), ylim=c(0,0.14))
+  poly.plot <- rbind(cbind(0:lim, output2[[a]]), c(lim, 0), c(0,0))
+  polygon(poly.plot, col="gray")
+  abline(v=mean_coverage[a], col="red")
+  }
+  
+  
+dev.off()
+
+## END
