@@ -18,5 +18,5 @@ input_array=$( head -n${SLURM_ARRAY_TASK_ID} helper1.txt | tail -n1 )
 # define main working directory
 workdir=<working directory>
 
-# Filter for MSMC and observed heterozygosity
-vcftools --gzvcf ${workdir}/02_vcf/${input_array}.vcf.gz  --max-missing 1 --max-alleles 2  --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/het_vcf/${input_array}
+# Filter for Observed Heterozygosity
+vcftools --gzvcf ${workdir}/02_vcf/${input_array}.vcf.gz  --max-missing 1 --max-alleles 2   --remove-indels --recode --recode-INFO-all -c | bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/het/${input_array}.het.vcf
