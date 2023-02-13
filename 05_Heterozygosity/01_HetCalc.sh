@@ -8,7 +8,7 @@
 #SBATCH --ntasks=4
 
 # Set working directory 
-workdir=/lustre/scratch/gbehrend/Demog_ETH/
+workdir=?
 
 # Calculate ratio of het sites vs all sites in each concatenated file 
 sample_END="$(head -n 1 ${workdir}/het/sample.vcf | awk '{print NF}')"
