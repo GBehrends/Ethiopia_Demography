@@ -1,11 +1,12 @@
+
 #!/bin/sh
 #SBATCH --chdir=./
 #SBATCH --job-name=filt_vcf 
 #SBATCH --nodes=1 --ntasks=12
-#SBATCH --partition quanah
+#SBATCH --partition=quanah
 #SBATCH --time=48:00:00
 #SBATCH --mem-per-cpu=8G
-#SBATCH --array=1-?
+#SBATCH --array=1-17
 
 
 # activate conda environment with vcftools 
@@ -13,10 +14,11 @@
 conda activate vcftools
 
 # define input files from helper file during genotyping
-input_array=$( head -n${SLURM_ARRAY_TASK_ID} helper1.txt | tail -n1 )
+input_array=$( head -n${SLURM_ARRAY_TASK_ID} samplelist | tail -n1 )
+depth=$( head -n${SLURM_ARRAY_TASK_ID} depthlist | tail -n1 )
 
 # define main working directory
-workdir=<working directory>
+workdir=/lustre/scratch/gbehrend/Demog_ETH
 
 # Filter for Observed Heterozygosity
-vcftools --gzvcf ${workdir}/02_vcf/${input_array}.vcf.gz  --max-missing 1 --max-alleles 2   --remove-indels --recode --recode-INFO-all -c | bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/het/${input_array}.het.vcf
+vcftools --gzvcf ${workdir}/02_vcf/${input_array}.vcf.gz  --minDP 6 --maxDP ${depth} --max-missing 1 --max-alleles 2   --remove-indels --recode --recode-INFO-all -c | bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/het/${input_array}.het.vcf 
