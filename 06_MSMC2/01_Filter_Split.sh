@@ -28,4 +28,4 @@ vcftools --gzvcf ${workdir}/02_vcf/${sample}.vcf.gz --minDP 6 --maxDP ${depth} -
 cut -f1 ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf | sort | uniq > ${workdir}/msmc/vcf/${sample}/chrom_list.txt
 
 # Make chromosomal vcfs 
-for i in $(cat ${workdir}/msmc/vcf/${sample}/chrom_list.txt); do grep "${i}" ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf | bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/msmc/vcf/${sample}/${i}.vcf 
+for i in $(cat ${workdir}/msmc/vcf/${sample}/chrom_list.txt); do grep "${i}" ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf | cut -f2,3,4,5 > ${workdir}/msmc/vcf/${sample}/${i}.vcf; done  
