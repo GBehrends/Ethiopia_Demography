@@ -4,6 +4,6 @@ Step 1: Make a summary output directory and copy the samplelist file there
 
 Step 2: Run the 01_Summary.sh script. 
 
-Step 3: Make the table from the outputs: 
+Step 3: Make the table from the outputs using the following command:  
 
 paste samplelist bases reads mapped_reads proportion_mapped sites_kept
