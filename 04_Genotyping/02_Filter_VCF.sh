@@ -14,11 +14,11 @@
 conda activate vcftools
 
 # define input files from helper file during genotyping
-input_array=$( head -n${SLURM_ARRAY_TASK_ID} samplelist | tail -n1 )
+sample=$( head -n${SLURM_ARRAY_TASK_ID} samplelist | tail -n1 )
 depth=$( head -n${SLURM_ARRAY_TASK_ID} depthlist | tail -n1 )
 
 # define main working directory
-workdir=/lustre/scratch/gbehrend/Demog_ETH
+workdir=?
 
-# Filter for Observed Heterozygosity
-vcftools --gzvcf ${workdir}/02_vcf/${input_array}.vcf.gz  --minDP 6 --maxDP ${depth} --max-missing 1 --max-alleles 2   --remove-indels --recode --recode-INFO-all -c | bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/het/${input_array}.het.vcf 
+# Filter for MSMC and Observed Heterozygosity
+vcftools --gzvcf ${workdir}/02_vcf/${sample}.vcf.gz  --minDP 6 --maxDP ${depth} --max-missing 1 --max-alleles 2   --remove-indels --recode --recode-INFO-all -c | bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/msmc/vcf/${sample}.vcf 
