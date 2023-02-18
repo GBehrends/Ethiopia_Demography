@@ -5,4 +5,4 @@ the msmc/vcf directory to cat the chromosomes kept after size filtering. This wi
 for each species. 
 
 Step 2: Run 02_Hetcalc.sh in the het directory. Submit is like this to iterate over all vcfs:
-for i in $(ls *vcf); do sed "s/sample/${i%\.vcf}/g" 02_HetCalc.sh | sbatch; done 
+"$(for i in $(ls *vcf); do sed "s/sample/${i%\.vcf}/g" 02_HetCalc.sh | sbatch; done)" 
