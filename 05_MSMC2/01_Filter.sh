@@ -33,5 +33,8 @@ zcat ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf.gz | cut -f1 | sed 's/ /
 # Create helper file with sample name to pair with the chromlist
 for i in $(cat ${workdir}/msmc/vcf/${sample}/chrom_list.txt); do echo ${sample} >> ${workdir}/msmc/vcf/${sample}/samp_list.txt; done 
 
+# Previous step adds an extra line; Remove it. 
+sed '1d' ${workdir}/msmc/vcf/${sample}/samp_list.txt
+
 # Create directory to store vcfs that will not be included in further analyses 
 mkdir ${workdir}/msmc/vcf/${sample}/excluded_chrom
