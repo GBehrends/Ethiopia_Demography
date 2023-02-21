@@ -1,4 +1,4 @@
-# Scripts to run MSMC2 on Single Individuals (Non-phased Genotypes).  
+# MSMC2 on Single Individuals (Non-phased Genotypes)
 
 Step 1: Create samplelist.txt and depthlist.txt files in the MSMC2 VCF directory. These will serve to identify the 
 sample prefixes and the maximum depth of coverage threshold to be used for each sample. Maximum depth of coverage 
