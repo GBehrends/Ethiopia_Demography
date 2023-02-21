@@ -34,7 +34,7 @@ for (( run=$START_NUM; run<=$END_NUM; run++ )); do
         chrom=$( head -n${run} ${workdir}/msmc/vcf/chrom_list.txt | tail -n1 )
         
         # Make chromosomal VCFs
-        zcat ${workdir}/msmc/vcf/${sample}.simple.vcf.gz | grep -w ${chrom} | cut -f2,3,4,5 >  ${workdir}/msmc/vcf/${sample}/${chrom}.vcf;
+        grep -w ${chrom} ${workdir}/msmc/vcf/${sample}.simple.vcf | cut -f2,3,4,5 >  ${workdir}/msmc/vcf/${sample}/${chrom}.vcf;
         
         # Size select chromosomes greater than 1Mbp; PLace the rest into the excluded chrom directory. 
         if (("$(tail -n 1 ${workdir}/msmc/vcf/${sample}/${chrom}.vcf | cut -f1)" < 100000)); then 
