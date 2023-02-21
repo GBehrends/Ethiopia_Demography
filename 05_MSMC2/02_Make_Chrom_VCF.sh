@@ -29,9 +29,9 @@ END_NUM=$(( $SLURM_ARRAY_TASK_ID * $PER_TASK ))
 for (( run=$START_NUM; run<=$END_NUM; run++ )); do
         echo This is SLURM task $SLURM_ARRAY_TASK_ID, run number $run
 
-        sample=$( head -n${run} samp_list.txt | tail -n1 )
+        sample=$( head -n${run} ${workdir}/msmc/vcf/samp_list.txt | tail -n1 )
 
-        chrom=$( head -n${run} chrom_list.txt | tail -n1 )
+        chrom=$( head -n${run} ${workdir}/msmc/vcf/chrom_list.txt | tail -n1 )
         
         # Make chromosomal VCFs
         zcat ${workdir}/msmc/vcf/${sample}.simple.vcf.gz | grep ${chrom} | cut -f2,3,4,5 >  ${workdir}/msmc/vcf/${sample}/${chrom}.vcf;
