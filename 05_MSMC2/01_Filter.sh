@@ -27,7 +27,7 @@ mkdir ${workdir}/msmc/vcf/${sample}
 vcftools --gzvcf ${workdir}/02_vcf/${sample}.vcf.gz --minDP 6 --maxDP ${depth} --max-missing 1 --max-alleles 2  --remove-indels --recode --recode-INFO-all -c | bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%GT]\n ' > ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf
 
 # Establish list of chromosomes inside of species sample vcf 
-zcat ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf.gz | cut -f1 | sed 's/ //g' | sort | uniq > ${workdir}/msmc/vcf/${sample}/chrom_list.txt
+cut -f1 ${workdir}/msmc/vcf/${sample}/${sample}.simple.vcf | sed 's/ //g' | sort | uniq > ${workdir}/msmc/vcf/${sample}/chrom_list.txt
 
 # Create helper file with sample name to pair with the chromlist
 for i in $(cat ${workdir}/msmc/vcf/${sample}/chrom_list.txt); do echo ${sample} >> ${workdir}/msmc/vcf/${sample}/samp_list.txt; done 
