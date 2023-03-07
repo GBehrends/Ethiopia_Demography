@@ -20,9 +20,8 @@ tstv=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/ROHan/tstv | tail -n1 )
 mkdir ${workdir}/ROHan/${sample}_20k
 
 # Make scaffolds list for each sample by listing the scaffold vcfs kept during the MSMC filtering step 
-ls ${workdir}/msmc/vcf/${sample}/*vcf > ${workdir}/ROHan/${sample}_20k/${sample}_scaffolds.txt
-sed -i "s,${workdir}/msmc/vcf/${sample}/,,g" ${workdir}/ROHan/${sample}_20k/${sample}_scaffolds.txt
-sed -i "s,\.vcf,,g" ${workdir}/ROHan/${sample}_20k/${sample}_scaffolds.txt
+ls ${workdir}/msmc/vcf/${sample}/*vcf | sed "s,${workdir}/msmc/vcf/${sample}/,,g" | sed "s,\.vcf,,g" \
+> ${workdir}/ROHan/${sample}_20k/${sample}_scaffolds.txt
 
 # Run ROHan 
 /lustre/scratch/gbehrend/Demog_ETH/ROHan/rohan/bin/rohan \
