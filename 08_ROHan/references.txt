@@ -1,0 +1,17 @@
+GCA_000247815.2_FicAlb1.5_genomic.fna.gz
+C_livia_pseudo.fasta.gz
+C_fuelleborni_pseudo.fasta.gz
+GCA_003957565.4_bTaeGut1.4.pri_genomic.fna.gz
+GCA_014839835.1_bDryPub1.pri_genomic.fna.gz
+M_adusta_pseudo.fasta.gz
+L_aspasia_pseudo.fasta.gz
+O_oriolus_pseudo.fasta.gz
+GCA_014839755.1_bSylBor1.pri_genomic.fna.gz
+GCA_001522545.3_Parus_major1.1_genomic.fna.gz
+P_trochilus_trochilus_pseudo.fasta.gz
+GCA_014839755.1_bSylBor1.pri_genomic.fna.gz
+GCA_022539315.2_serCan2020_genomic.fna.gz
+GCA_022539315.2_serCan2020_genomic.fna.gz
+T_rufiventris_pseudo.fasta.gz
+T_rufiventris_pseudo.fasta.gz
+Z_lateralis_melanops_pseudo.fasta.gz
