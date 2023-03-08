@@ -9,10 +9,8 @@ chromosomal VCFs by size, gzipping those less than 1Mbp and storing them in a se
 
 Step 3: 03_Make_Scaffolds_Bootstrap.sh. This script will generate the msmc2 scaffolds and all their bootstraps for each sample.
 
-Step 2: Concatenate all species helper1 and helper2 files into a helper1.txt file and helper2.txt file into main working directory where 02_MSMC.sh will be run like so: 
+Step 4: Concatenate all species helper1 and helper2 files into a helper1.txt file and helper2.txt file into main working directory using 04_Make_Helper.sh. 
 
-for i in $(cat sampleslist.txt); do 
-  cat ${i}_demography/helper1.txt >> <main working directory>/helper1.txt
-  cat ${i}_demography/helper2.txt >> <main working directory>/helper2.txt; done 
+Step 5: Run 05_Run_MSMC2.sh. 
 
-Run 02_MSMC.sh
+
