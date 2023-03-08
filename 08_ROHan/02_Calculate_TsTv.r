@@ -1,3 +1,4 @@
+
 # Creating Table of Transition/Tranversion Ratio for each sample
 
 # Establish list of TsTv summary files 
@@ -19,3 +20,6 @@ tstv <- cbind.data.frame(samples, tstv)
 # Save table to file 
 write.table(mean_TsTv, file = "tstv.test", sep = "\t", 
 		    row.names = F, quote = F, col.names = F)
+
+
+
