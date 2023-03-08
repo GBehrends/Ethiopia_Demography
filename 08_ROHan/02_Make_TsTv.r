@@ -1,11 +1,11 @@
 
 # Creating Table of Transition/Tranversion Ratio for each sample
 
-# Establish list of TsTv summary files 
+# Establish list of sample IDs 
 samples <- read.table(file = "sampleslist.txt")
 samples <- samples$V1
 
-# Calculate the weighted average Ts/Tv for each file 
+# Extract the Ts/Tv for each sample's TsTv summary file
 tstv <- c()
 for (x in 1:length(samples)){
 	f <- read.table(file = paste0(samples[x], ".TsTv.summary"),
@@ -18,7 +18,7 @@ for (x in 1:length(samples)){
 tstv <- cbind.data.frame(samples, tstv)
 
 # Save table to file 
-write.table(mean_TsTv, file = "tstv.test", sep = "\t", 
+write.table(mean_TsTv, file = "tstv", sep = "\t", 
 		    row.names = F, quote = F, col.names = F)
 
 
