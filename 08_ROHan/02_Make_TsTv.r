@@ -13,11 +13,8 @@ for (x in 1:length(samples)){
 	f <- f[7,2] / f[8,2]
 	tstv <- c(tstv, f)
 	}
-	
-# Add sample names to table
-tstv <- cbind.data.frame(samples, tstv)
 
-# Save table to file 
+# Save TsTv list to file 
 write.table(mean_TsTv, file = "tstv", sep = "\t", 
 		    row.names = F, quote = F, col.names = F)
 
