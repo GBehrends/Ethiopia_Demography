@@ -21,3 +21,9 @@ depth=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/msmc/vcf/depthlist.txt | tail 
 # Filter using vcftools
 vcftools --gzvcf ${workdir}/02_vcf/${sample}.vcf.gz --minDP 6 --maxDP ${depth} --max-missing 1 --max-alleles 2 \
 --remove-indels --recode --recode-INFO-all --out ${workdir}/03_vcf/${sample}
+
+# Establish list of chromosomes inside of species sample vcf 
+grep -v "#" ${workdir}/03_vcf/${sample}.recode.vcf | cut -f1  | sed 's/ //g' | sort | uniq > ${workdir}/03_vcf/${sample}_chrom_list.txt
+
+# Create helper file with sample name to pair with the chromlist
+for i in $(cat ${workdir}/03_vcf/${sample}_chrom_list.txt); do echo ${sample} >> ${workdir}/03_vcf/${sample}_samp_list.txt; done 
