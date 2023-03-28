@@ -10,8 +10,8 @@ Step 3: Run the 03_Simplify.sh script to sort and simplify scaffold VCFs into a 
 
 Step 4: 04_Make_Scaffolds_Bootstrap.sh. This script will generate the msmc2 scaffolds and all their bootstraps for each sample.
 
-Step 5: Concatenate all species helper1 and helper2 files into a helper1.txt file and helper2.txt file into main working directory using 04_Make_Helper.sh. 
+Step 5: Concatenate all species helper1 and helper2 files into a helper1.txt file and helper2.txt file into main working directory using 05_Make_Helper.sh. 
 
-Step 5: Run 05_Run_MSMC2.sh. 
+Step 6: Run 06_Run_MSMC2.sh. 
 
 
