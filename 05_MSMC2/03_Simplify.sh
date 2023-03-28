@@ -24,7 +24,7 @@ mkdir ${workdir}/msmc/vcf/${sample}
 # Sort and simplify VCF to the fields needed for MSMC2
 for i in $(ls ${workdir}/03_vcf/${sample}_Scaffolds | grep "vcf" | grep -v "filtered"); do
 bcftools sort ${workdir}/03_vcf/${sample}_Scaffolds/${i} -o ${workdir}/03_vcf/${sample}_Scaffolds/${i%\.vcf}.sorted.vcf;
-bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%GT]\n ' ${workdir}/03_vcf/${sample}_Scaffolds/${i} -o ${workdir}/03_vcf/${sample}_Scaffolds/${i%\.vcf}.simple.vcf;
+bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' ${workdir}/03_vcf/${sample}_Scaffolds/${i} -o ${workdir}/03_vcf/${sample}_Scaffolds/${i%\.vcf}.simple.vcf;
 
 # Remove intermediary sorted VCF file
 rm ${workdir}/03_vcf/${sample}_Scaffolds/${i%\.vcf}.sorted.vcf;
