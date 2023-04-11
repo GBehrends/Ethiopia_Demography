@@ -17,7 +17,7 @@ workdir=?
 # Provide helper file with species, respective reference assemblies, and --max-depth threshold 
 species=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/02_vcf/samplelist | tail -n1 )
 max=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/02_vcf/depthlist | tail -n1 )
-ref=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/02_vcf/helper3.txt | tail -n1 )
+ref=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/02_vcf/referencelist | tail -n1 )
 
 # Unzip the reference assembly 
 # gunzip /lustre/work/gbehrend/demo_ref/${ref} 
