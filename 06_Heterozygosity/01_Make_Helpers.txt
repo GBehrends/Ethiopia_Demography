@@ -1,0 +1,9 @@
+## Run this interactively to build a a list of all chromosome VCFs from each species to calculate heterozygosity on
+workdir=<main working directory> 
+
+# Create helper2.txt using samplelist.txt
+for i in $(cat samplelist.txt); do cd ${workdir}/03_vcf/${i}_Scaffolds/; find ~+ -type f | \
+grep -v -e "filtered" -e "sorted" -e "txt" -e "Chromosome_Z" -e "Chromosome_W" >> ${workdir}/het/helper2.txt; done 
+
+# Create helper1.txt. The column to cut corresponds to where you see the species ID in the path in helper2.txt
+cut -f7 -d "/" test | sed 's/_Scaffolds//g' > ${workdir}/het/helper1.txt
