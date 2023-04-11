@@ -15,8 +15,8 @@ conda activate vcftools
 workdir=? 
 
 # define input files from helper file during genotyping
-sample=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/msmc/vcf/samplelist.txt | tail -n1 )
-depth=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/msmc/vcf/depthlist.txt | tail -n1 )
+sample=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/02_vcf/samplelist | tail -n1 )
+depth=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/02_vcf/depthlist | tail -n1 )
 
 # Filter using vcftools
 vcftools --gzvcf ${workdir}/02_vcf/${sample}.vcf.gz --minDP 6 --maxDP ${depth} --max-missing 1 --max-alleles 2 \
