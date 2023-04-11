@@ -34,7 +34,7 @@ for (( run=$START_NUM; run<=$END_NUM; run++ )); do
         if(("$(ls ${workdir}/03_vcf | grep "${sample}_Scaffolds" | wc -l )" == 0)); 
         then mkdir ${workdir}/03_vcf/${sample}_Scaffolds; fi
 
-        # Creater header file for each sample
+        # Creater heade file for each sample
         if(("$(ls ${workdir}/03_vcf/${sample}_Scaffolds | grep "header.txt" | wc -l )"  == 0));
         then grep "#" ${workdir}/03_vcf/${sample}.recode.vcf >>  ${workdir}/03_vcf/${sample}_Scaffolds/header.txt; fi 
         
