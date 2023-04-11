@@ -1,0 +1,10 @@
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_4A.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_10.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_18.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/KE165324.1.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_21.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_17.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_27.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_19.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_7.vcf
+/lustre/scratch/gbehrend/Demog_ETH/03_vcf/Cercomela_sordida_EB023_Scaffolds/Chromosome_20.vcf
