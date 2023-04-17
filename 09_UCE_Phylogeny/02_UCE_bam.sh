@@ -21,11 +21,12 @@ sample=$( head -n${SLURM_ARRAY_TASK_ID} ${workdir}/01_bam/samplelist | tail -n1 
 
 # Creating a bed file for each reference assembly's UCE probes 
 grep ">" ${workdir}/reference_probes/${ref}_probes/${ref}.fasta | cut -f2,3 -d "|" | sed 's/contig://g' | \
-sed 's/slice://g' | sed 's/|/\t/g' | sed 's/-/\t/g' | sed 's/Pseudo//g' \
-> ${workdir}/reference_probes/${ref}.bed
+sed 's/slice://g' | sed 's/|/\t/g' | sed 's/-/\t/g' | sed 's/Pseudo//g' | grep -v -e "Chromosome_W" -e \
+"Chromosome_Z" > ${workdir}/reference_probes/${ref}.bed
 
 # Using samtools to subset sample alignments to whole reference genomes by UCEs 
 # found in the reference genome
+mkdir -p ${workdir}/UCEs/bam_UCE/
 samtools view -b -h -L ${workdir}/UCEs/reference_probes/${ref}.bed \
 ${workdir}/01_bam/${sample}_final.bam > ${workdir}/UCEs/bam_UCE/${sample}_UCE.bam
 
