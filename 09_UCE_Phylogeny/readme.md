@@ -17,12 +17,12 @@ Step_3: 03_Extract_Sample_UCEs.sh \
 Assembles the sequences from UCE fastq files for each sample into contigs and matches those 
 contigs to the original tetrapod UCE probeset. 
 
-Step_4: 04_Make_UCE_List.sh \ 
+Step_4: 04_Make_UCE_List.sh \
 Creates a list of all possible UCEs contained in all samples. 
 
-Step_5: 05_Align_UCEs.sh \ 
+Step_5: 05_Align_UCEs.sh \
 Checks if a UCE in contained in all samples. If the UCE sequence is in all samples, an alignment 
 is made using MUSCLE. 
 
-Step_6: 06_RAxML.sh \ 
+Step_6: 06_RAxML.sh \
 Quality trims the alignments and generates a gene trees for UCEs that were kept previously.   
