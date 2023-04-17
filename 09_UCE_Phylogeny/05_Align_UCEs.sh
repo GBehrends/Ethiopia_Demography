@@ -41,11 +41,13 @@ for (( run=$START_NUM; run<=$END_NUM; run++ )); do
         samples="$( wc -l < samplelist )"
         entries="$( grep ">" ${workdir}/final_UCEs/${uce}_all.fasta | wc -l )"
 
-        # If all species are present, create an alignment with the multispecies UCE fasta
+        # If all species are present, create an alignment with the multispecies UCE fasta and add 
+        # that alignment to the list of successful alignments for the next step 
                 if((${samples} == ${entries}));
                 then muscle -align ${workdir}/final_UCEs/${uce}_all.fasta \
                 -output ${workdir}/final_UCEs/${uce}.afa;
                 rm ${workdir}/final_UCEs/${uce}_all.fasta;
+                echo "${uce}" >> ${workdir}/alignment_list.txt;  
 
                 # If all species are not present, delete the fasta
                 else rm ${workdir}/final_UCEs/${uce}_all.fasta;
