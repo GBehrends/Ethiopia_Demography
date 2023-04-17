@@ -1,4 +1,4 @@
-Creating a maximimum clade credibillity UCE phylogeny for study samples \ 
+Creating a maximimum clade credibillity UCE phylogeny for study samples \
 
 Before beginning, be sure that all of your reference assembly fasta file names are all lowercase. 
 At one point in Phyluce, outputs become lowercase. 
