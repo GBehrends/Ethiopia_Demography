@@ -1,4 +1,4 @@
-Creating a maximimum clade credibillity UCE phylogeny for study species 
+Creating a maximimum clade credibillity UCE phylogeny for study samples 
 
 Before beginning, be sure that all of your reference assembly fasta file names are all lowercase. 
 At one point in Phyluce, outputs become lowercase. 
@@ -10,7 +10,7 @@ from the input references assemblies outlined in the "references" list.
 Step_2: 02_UCE_bam.sh
 Creates a bed file outlining the chromosome start and stop positions for all UCEs found in 
 the reference assemblies. It then uses samtools to isolate the UCE regions in the bam files for 
-each species (from the 02_Alignment section). These extracted bam regions are then converted to 
+each sample(from the 02_Alignment section). These extracted bam regions are then converted to 
 UCE fastq files. 
 
 Step_3: 03_Extract_Sample_UCEs.sh
