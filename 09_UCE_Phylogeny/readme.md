@@ -1,7 +1,8 @@
 Creating a maximimum clade credibillity UCE phylogeny for study samples \
 
 Before beginning, be sure that all of your reference assembly fasta file names are all lowercase. 
-At one point in Phyluce, outputs become lowercase. 
+At one point in Phyluce, outputs become lowercase, and it is simpler to use the same reference 
+assembly list. 
 
 Step_1: 01_Extract_Probes.sh \
 Uses a standard tetrapod UCE data set (from the authors of Phyluce) to extract UCE regions 
